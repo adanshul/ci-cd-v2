@@ -4,6 +4,13 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  AWS_REGION: eu-west-2
+  ECR_REPOSITORY: ctf-vulnerable-app
+  ECS_SERVICE: ctf-vulnerable-app-service
+  ECS_CLUSTER: ctf-cluster1
+  ECS_TASK_DEFINITION: ./task_definition.json
+
 jobs:
 
   build:
