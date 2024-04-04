@@ -3,8 +3,7 @@ name: CI/CD Pipeline
 on:
   pull_request:
     branches: [ main ]
-
-
+    
 env:
   AWS_REGION: eu-west-2
   ECR_REPOSITORY: ctf-vulnerable-app
@@ -12,7 +11,6 @@ env:
   ECS_CLUSTER: ctf-cluster1
   ECS_TASK_DEFINITION: ./task_definition.json
 
-  
 jobs:
 
   build:
