@@ -1,16 +1,17 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:730335298712:task-definition/ctf-vulnerable-app-task:2",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:730335298712:task-definition/ctf-vulnerable-app-task2:1",
     "containerDefinitions": [
         {
-            "name": "ctf-vulnerable-app-container",
-            "image": "730335298712.dkr.ecr.us-east-2.amazonaws.com/ctf-vulnerable-app:latest",
+            "name": "ctf-vulnerable-app-container2",
+            "image": "730335298712.dkr.ecr.us-east-2.amazonaws.com/ctf-vulnerable-app2",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "3000",
+                    "name": "ctf-vulnerable-app-container2-3000-tcp",
                     "containerPort": 3000,
                     "hostPort": 3000,
-                    "protocol": "tcp"
+                    "protocol": "tcp",
+                    "appProtocol": "http"
                 }
             ],
             "essential": true,
@@ -23,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/ctf-vulnerable-app-task",
+                    "awslogs-group": "/ecs/ctf-vulnerable-app-task2",
                     "awslogs-region": "us-east-2",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -32,10 +33,11 @@
             "systemControls": []
         }
     ],
-    "family": "ctf-vulnerable-app-task",
+    "family": "ctf-vulnerable-app-task2",
+    "taskRoleArn": "arn:aws:iam::730335298712:role/ctf-vulnerable-app-task-execution-role",
     "executionRoleArn": "arn:aws:iam::730335298712:role/ctf-vulnerable-app-task-execution-role",
     "networkMode": "awsvpc",
-    "revision": 2,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -50,6 +52,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -78,7 +83,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-04-05T02:08:02.345Z",
+    "registeredAt": "2024-04-09T04:34:57.068Z",
     "registeredBy": "arn:aws:iam::730335298712:user/anshul",
     "tags": []
 }
